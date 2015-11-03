@@ -5,7 +5,9 @@ class SchemagenTest < Minitest::Test
     refute_nil ::Schemagen::VERSION
   end
 
-  def test_it_does_something_useful
-    assert false
+  def test_generation_of_resources_from_rails_applicaiton
+    app = Rails.application
+    resources = Schemagen.resources Rails.application
+    assert_equal ['author', 'blog', 'post'], resources.map(&:name).sort
   end
 end

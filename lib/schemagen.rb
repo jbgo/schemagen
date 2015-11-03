@@ -1,5 +1,12 @@
-require "schemagen/version"
+require 'schemagen/version'
+require 'schemagen/rails_app'
+require 'schemagen/resource'
+require 'schemagen/route_inspector'
 
 module Schemagen
-  # Your code goes here...
+  attr_reader :app
+
+  def self.resources(rails_app)
+    RailsApp.new(rails_app).resources
+  end
 end
